@@ -1,5 +1,11 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 
+// Import UI
+import Navbar from './UI/Navbar';
+import Sidebar from './UI/Sidebar';
+import Footer from './UI/Footer';
+
+// Import pages
 import HomePage from './pages/HomePage';
 import Products from './pages/Products';
 import SingleProduct from './pages/SingleProduct';
@@ -14,7 +20,9 @@ import './App.css';
 
 function App() {
   return (
-    <div>
+    <>
+      <Navbar />
+      <Sidebar />
       <Routes>
         <Route path='/' element={<Navigate replace to='/homepage' />} />
         <Route path='/homepage' element={<HomePage />} />
@@ -26,7 +34,8 @@ function App() {
         <Route path='/contacts' element={<Contacts />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
-    </div>
+      <Footer />
+    </>
   );
 }
 
