@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 
 import { linksConstants } from '../constants/PageLinks';
-
+import CartButtons from '../components/CartButtons';
 import styled from 'styled-components';
 
 //NavStyles - nav container
@@ -18,10 +18,11 @@ const Navbar = () => {
           </button>
         </div>
         <ul className='nav-links'>
-          {linksConstants.map(item => <li>
+          {linksConstants.map(item => <li key={item.id}>
             <NavLink to={item.url}>{item.text}</NavLink>
           </li>)}
         </ul>
+        <CartButtons />
       </div>
     </NavStyles>
   );
