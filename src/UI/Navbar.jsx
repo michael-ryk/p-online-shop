@@ -1,9 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
 
+import { linksConstants } from '../constants/PageLinks';
+
 import styled from 'styled-components';
 
 //NavStyles - nav container
-
 const Navbar = () => {
   return (
     <NavStyles>
@@ -17,18 +18,9 @@ const Navbar = () => {
           </button>
         </div>
         <ul className='nav-links'>
-          <li>
-            <NavLink to='/homepage'>עמוד הבית</NavLink>
-          </li>
-          <li>
-            <NavLink to='/products'>מוצרים</NavLink>
-          </li>
-          <li>
-            <NavLink to='/about'>עלינו</NavLink>
-          </li>
-          <li>
-            <NavLink to='/contacts'>צור קשר</NavLink>
-          </li>
+          {linksConstants.map(item => <li>
+            <NavLink to={item.url}>{item.text}</NavLink>
+          </li>)}
         </ul>
       </div>
     </NavStyles>
