@@ -19,6 +19,8 @@ const FooterStyle = styled.footer`
   text-align: center;
   height: 5rem;
   background-color: var(--clr-heading-4);
+  max-width: var(--max-width);
+  margin: 0 auto;
 
   span {
     color: var(--clr-primary-5);
