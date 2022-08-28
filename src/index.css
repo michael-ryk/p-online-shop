@@ -70,7 +70,6 @@ ul {
 /* Applies also to menu */
 a {
   text-decoration: none;
-  color: var(--clr-primary-3);
 }
 
 /* General button settings */

@@ -5,37 +5,26 @@ const CartButtons = () => {
 
   return (
     <ButtonsStyles>
-      <Link to='/cart' className='cart-btn'>
-        Cart
-      </Link>
-      <button type='button' className='auth-btn'>Login</button>
+      <button type='button'>Cart</button>
+      <button type='button'>Login</button>
     </ButtonsStyles>
   );
 }
 
 const ButtonsStyles = styled.div`
-  display:none;
-
-@media only screen and (min-width: 990px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-
-    .cart-btn {
-      color: var(--clr-heading-1);
-      font-size: 1.5rem;
-      letter-spacing: var(--spacing);
-    }
-
-    .auth-btn {
+    
+    button {
       background: transparent;
       border-color: transparent;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       cursor: pointer;
       letter-spacing: var(--spacing);
+      color: var(--clr-heading-3);
       border: 0;
     }
-}
 `
 
 export default CartButtons;

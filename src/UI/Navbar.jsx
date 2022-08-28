@@ -22,7 +22,9 @@ const Navbar = () => {
             <NavLink to={item.url}>{item.text}</NavLink>
           </li>)}
         </ul>
-        <CartButtons />
+        <div className='cart-buttons'>
+          <CartButtons />
+        </div>
       </div>
     </NavStyles>
   );
@@ -57,9 +59,17 @@ const NavStyles = styled.nav`
     display: none;
   }
 
+  .cart-auth-btn {
+    color: red;
+  }
+
+  .cart-buttons{
+    display: none;
+  }
+
   @media only screen and ( min-width: 990px ){
     .nav-btn {
-      /* display: none; In future will be hidden */ 
+      display: none;
     }
 
     .nav-main {
@@ -74,7 +84,7 @@ const NavStyles = styled.nav`
       flex-direction: row-reverse;
       margin: 0.5rem 0;
 
-      li {
+      li a {
         color: var(--clr-heading-3);
         margin: 0 1rem;
         font-size: 1.6rem;
@@ -88,6 +98,10 @@ const NavStyles = styled.nav`
           font-weight: bold;
         }
       }
+    }
+
+    .cart-buttons{
+      display: grid;
     }
   }
 
