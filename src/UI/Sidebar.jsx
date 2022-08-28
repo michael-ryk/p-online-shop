@@ -4,7 +4,7 @@ import { linksConstants } from '../constants/PageLinks';
 import CartButtons from '../components/CartButtons';
 import styled from 'styled-components';
 
-const Sidebar = () => {
+const Sidebar = ({closeSidebar}) => {
 
   return (
     <SidebarStyles>
@@ -12,7 +12,7 @@ const Sidebar = () => {
         <Link to='/'>
             <h1>LOGO</h1>
           </Link>
-        <button type='button' className='sidebar-btn'>X</button>
+        <button type='button' className='sidebar-btn' onClick={closeSidebar}>X</button>
       </div>
       <ul className='sidebar-links'>
         {linksConstants.map(item => {

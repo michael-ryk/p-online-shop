@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 // Import UI
@@ -19,10 +20,13 @@ import styled from 'styled-components';
 import './App.css';
 
 function App() {
+
+  const [ showSidebar, setShowSidebar ] = useState(false);
+
   return (
     <>
-      <Navbar />
-      <Sidebar />
+      <Navbar openSidebar={() => {setShowSidebar(true)}} />
+      {showSidebar && <Sidebar closeSidebar={() => {setShowSidebar(false)}}/>}
       <Routes>
         <Route path='/' element={<Navigate replace to='/homepage' />} />
         <Route path='/homepage' element={<HomePage />} />

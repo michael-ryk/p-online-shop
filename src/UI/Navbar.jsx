@@ -5,7 +5,7 @@ import CartButtons from '../components/CartButtons';
 import styled from 'styled-components';
 
 //NavStyles - nav container
-const Navbar = () => {
+const Navbar = ({openSidebar}) => {
   return (
     <NavStyles>
       <div className='nav-main'>
@@ -13,8 +13,8 @@ const Navbar = () => {
           <Link to='/'>
             <h1>LOGO</h1>
           </Link>
-          <button type='button' className='nav-btn'>
-            Burger
+          <button type='button' className='nav-btn' onClick={openSidebar}>
+            OpenSideBar
           </button>
         </div>
         <ul className='nav-links'>
