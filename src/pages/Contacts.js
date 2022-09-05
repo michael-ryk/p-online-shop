@@ -1,6 +1,7 @@
-const Contacts = () => {
+import UnderConstruction from '../components/UnderConstruction';
 
-  return <h1>Contacts</h1>
+const Contacts = () => {
+  return <UnderConstruction />
 }
 
 export default Contacts;
