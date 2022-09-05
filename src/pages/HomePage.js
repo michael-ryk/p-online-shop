@@ -5,12 +5,12 @@ const HomePage = () => {
 
   return (
     <HomeStyles>
-      <h1>חנות למוצרים חיוניים</h1>
+      <h1>חנות רהיטים עולמית</h1>
       <div className='center-container'>
         <div className='center-text'>
-          <p>הגעתם לחנות אונליין למוצרים חיוניים. אנחנו מעמינים באיכות השירות לאורך השנים ונאמנות ללקוחות שלנו.</p>
+          <p>הגעתם לחנות אונליין לרהיטים באיכות גבוהה. אנחנו מאמינים באיכות השירות לאורך השנים ונאמנות ללקוחות שלנו.</p>
           <br />
-          <p>אתם מוזמנים לעיין ולהתרשם ממגוון מוצרים שחברה שלנו מספקת </p>
+          <p>אתם מוזמנים לעיין ולהתרשם ממגוון מוצרים שחברה שלנו מספקת.</p>
         </div>
         <div className='center-img'>
           <img src='https://www.allstoragesystems.com.au/wp-content/uploads/2021/07/home-hero-warehouse.jpg' alt='storage' />
@@ -38,7 +38,6 @@ const HomeStyles = styled.section`
 
   .center-container{
     display: flex;
-    flex-direction: row-reverse;
     padding: 0 1rem;
   }
 
