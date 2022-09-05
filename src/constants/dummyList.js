@@ -2,7 +2,7 @@ const productsList = [
   {
     id: 1,
     name: 'ספה דו-מושבית Klippan',
-    price: 1245,
+    price: 124500,
     image: 'https://www.ikea.com/il/he/images/products/klippan-2-seat-sofa-kabusa-dark-grey__0562986_pe663639_s5.jpg?f=s',
     colors: [
       '#000',
@@ -14,7 +14,7 @@ const productsList = [
   {
     id: 2,
     name: 'ספה דו-מושבית Parup',
-    price: 2195,
+    price: 219500,
     image: 'https://www.ikea.com/il/he/images/products/paerup-2-seat-sofa-gunnared-beige__0950101_pe800212_s5.jpg?f=s',
     colors: [
       '#000',
@@ -26,7 +26,7 @@ const productsList = [
   {
     id: 3,
     name: 'ספה דו-מושבית Klippan',
-    price: 1245,
+    price: 124500,
     image: 'https://www.ikea.com/il/he/images/products/klippan-2-seat-sofa-kabusa-dark-grey__0562986_pe663639_s5.jpg?f=s',
     colors: [
       '#000',
@@ -38,7 +38,7 @@ const productsList = [
   {
     id: 4,
     name: 'ספה דו-מושבית Parup',
-    price: 2195,
+    price: 219500,
     image: 'https://www.ikea.com/il/he/images/products/paerup-2-seat-sofa-gunnared-beige__0950101_pe800212_s5.jpg?f=s',
     colors: [
       '#000',
