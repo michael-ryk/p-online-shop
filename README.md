@@ -4,6 +4,7 @@
 - ReactJS
 - Redux
 - React-route
+- Styled Components
 
 ## Features
 - fetch data from backend
