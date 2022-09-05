@@ -1,3 +1,4 @@
+import { formatPrice } from '../Helpers/formatPrice';
 import styled from 'styled-components';
 
 const Product = ({name, price, image, description, category}) => {
@@ -6,7 +7,7 @@ const Product = ({name, price, image, description, category}) => {
       <div className='product-container'>
         <img src={image} alt='preview' />
         <h3>{name}</h3>
-        <h2>&#8362; {price}</h2>
+        <h2>{formatPrice(price)}</h2>
         <p>{description}</p>
       </div>
     </ProductStyle>
