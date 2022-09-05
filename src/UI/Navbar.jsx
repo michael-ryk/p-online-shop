@@ -81,7 +81,6 @@ const NavStyles = styled.nav`
     .nav-links {
       display: flex;
       justify-content: center;
-      flex-direction: row-reverse;
       margin: 0.5rem 0;
 
       li a {

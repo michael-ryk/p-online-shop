@@ -1,6 +1,7 @@
-const About = () => {
+import UnderConstruction from '../components/UnderConstruction';
 
-  return <h1>About</h1>
+const About = () => {
+  return <UnderConstruction />
 }
 
 export default About;
