@@ -29,6 +29,7 @@ function App() {
       {showSidebar && <Sidebar closeSidebar={() => {setShowSidebar(false)}}/>}
       <Routes>
         <Route path='/' element={<Navigate replace to='/homepage' />} />
+        <Route path='p-online-shop/' element={<Navigate replace to='/homepage' />} />
         <Route path='/homepage' element={<HomePage />} />
         <Route path='/products' element={<Products />} />
         <Route path='/products/:id' element={<SingleProduct />} />
