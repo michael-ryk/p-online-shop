@@ -1,0 +1,1 @@
+export const products_url = 'https://p-online-shop-466df-default-rtdb.firebaseio.com/products.json';

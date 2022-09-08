@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { products_url } from '../constants/urls';
 import Product from '../components/Product';
 
 import styled from 'styled-components';
@@ -13,9 +13,7 @@ const Products = () => {
     // fetch using async await
     
     const fetchProductsList = async () => {
-      const response = await fetch(
-        'https://p-online-shop-466df-default-rtdb.firebaseio.com/products.json'
-      );
+      const response = await fetch(products_url);
       const data = await response.json();
 
       if(!response.ok){
