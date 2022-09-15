@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { products_url } from './constants/urls';
 
 // Import UI
 import Navbar from './UI/Navbar';
@@ -16,20 +18,75 @@ import About from './pages/About';
 import Contacts from './pages/Contacts';
 import NotFound from './pages/NotFound';
 
-import styled from 'styled-components';
 import './App.css';
+import { productsActions } from './store/products';
 
 function App() {
+  const dispatch = useDispatch();
 
-  const [ showSidebar, setShowSidebar ] = useState(false);
+  // Fetch products from db and update store
+  useEffect(() => {
+
+    // fetch product list using async await from DB
+    const fetchProductsList = async () => {
+      const response = await fetch(products_url);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error('Problem connect to DB!');
+      }
+
+      // Adapt data to be handled by map()
+      const adaptedProductsList = [];
+      for (const key in data) {
+        if (data[key]) {
+          adaptedProductsList.push({
+            id: key,
+            name: data[key].name,
+            price: data[key].price,
+            description: data[key].description,
+            image: data[key].image,
+            category: data[key].category,
+          });
+        }
+      }
+      
+      // Set Store list of products
+      dispatch(
+        productsActions.addProductsToStore({
+          productsList: adaptedProductsList,
+        })
+      );
+    };
+
+    // trigger async function to fetch data and catch errors
+    fetchProductsList().catch((err) => {
+      console.log(err.message);
+    });
+  }, []);
+
+  const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     <>
-      <Navbar openSidebar={() => {setShowSidebar(true)}} />
-      {showSidebar && <Sidebar closeSidebar={() => {setShowSidebar(false)}}/>}
+      <Navbar
+        openSidebar={() => {
+          setShowSidebar(true);
+        }}
+      />
+      {showSidebar && (
+        <Sidebar
+          closeSidebar={() => {
+            setShowSidebar(false);
+          }}
+        />
+      )}
       <Routes>
         <Route path='/' element={<Navigate replace to='/homepage' />} />
-        <Route path='p-online-shop/' element={<Navigate replace to='/homepage' />} />
+        <Route
+          path='p-online-shop/'
+          element={<Navigate replace to='/homepage' />}
+        />
         <Route path='/homepage' element={<HomePage />} />
         <Route path='/products' element={<Products />} />
         <Route path='/products/:id' element={<SingleProduct />} />
