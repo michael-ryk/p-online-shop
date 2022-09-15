@@ -8,7 +8,9 @@ const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    // Future functions
+    addProductsToStore(state, action){
+      state.productsList = action.payload.productsList;
+    }
   }
 });
 
