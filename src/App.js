@@ -10,7 +10,7 @@ import Footer from './UI/Footer';
 
 // Import pages
 import HomePage from './pages/HomePage';
-import Products from './pages/Products';
+import ProductsPage from './pages/ProductsPage';
 import SingleProduct from './pages/SingleProduct';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
@@ -88,7 +88,7 @@ function App() {
           element={<Navigate replace to='/homepage' />}
         />
         <Route path='/homepage' element={<HomePage />} />
-        <Route path='/products' element={<Products />} />
+        <Route path='/products' element={<ProductsPage />} />
         <Route path='/products/:id' element={<SingleProduct />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />

@@ -8,7 +8,6 @@ const Products = () => {
   // Take list of products from Redux store
   const products = useSelector(state => state.productsList)
 
-
   return (
     <ProductsStyles>
       {products && products.map((item) => {
@@ -20,8 +19,6 @@ const Products = () => {
 };
 
 const ProductsStyles = styled.div`
-  max-width: var(--max-width);
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem 0.5rem;
