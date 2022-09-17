@@ -6,7 +6,8 @@ import styled from 'styled-components';
 const Products = () => {
 
   // Take list of products from Redux store
-  const products = useSelector(state => state.productsList)
+  console.log("products")
+  const products = useSelector(state => state.products.productsList)
 
   return (
     <ProductsStyles>

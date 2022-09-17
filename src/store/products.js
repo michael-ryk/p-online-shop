@@ -1,4 +1,4 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   productsList: [],
@@ -14,7 +14,5 @@ const productsSlice = createSlice({
   }
 });
 
-const store = configureStore({ reducer: productsSlice.reducer});
-
 export const productsActions = productsSlice.actions;
-export default store;
+export default productsSlice.reducer;
