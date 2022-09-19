@@ -1,18 +1,32 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterActions } from '../store/filter';
 import styled from 'styled-components';
 import { BsGridFill, BsList } from 'react-icons/bs';
 
 const SortBar = () => {
-  const numberOfFilteredItems = useSelector(state => state.filter.filteredItems.length);
-  const viewType = useSelector(state => state.filter.viewType);
+  const dispatch = useDispatch();
+  const numberOfFilteredItems = useSelector(
+    (state) => state.filter.filteredItems.length
+  );
+  const viewType = useSelector((state) => state.filter.viewType);
 
   return (
     <SortBarStyles>
       <div className='btn-container'>
-        <button className={`${viewType === 'grid-view' && 'active-btn'}`}>
+        <button
+          type='button'
+          name='grid'
+          className={`${viewType === 'grid' ? 'active-btn' : ''}`}
+          onClick={() => dispatch(filterActions.setViewMode('grid'))}
+        >
           <BsGridFill />
         </button>
-        <button className={`${viewType === 'list-view' && 'active-btn'}`}>
+        <button
+          type='button'
+          name='list'
+          className={`${viewType === 'list' ? 'active-btn' : ''}`}
+          onClick={() => dispatch(filterActions.setViewMode('list'))}
+        >
           <BsList />
         </button>
       </div>
@@ -21,7 +35,7 @@ const SortBar = () => {
         <label htmlFor='sort'>מיון לפי</label>
         <select name='sort' id='sort' className='sort-input'>
           <option value='price-lowest'>מחיר (נמוך לגבוהה)</option>
-          <option value='price-highers'>מחיר (גבוהה לנמוך)</option>
+          <option value='price-highers'>מחיר (גבוהה לנמוך)</option>FD
           <option value='name-a'>שם הפריט (א-ת)</option>
           <option value='name-z'>שם הפריט (ת-א)</option>
         </select>
@@ -48,7 +62,7 @@ const SortBarStyles = styled.section`
       border-radius: var(--radius);
       cursor: pointer;
       color: var(--clr-heading-3);
-      &:hover{
+      &:hover {
         transition: var(--transition);
         color: var(--clr-paragraph-5);
       }
@@ -66,7 +80,7 @@ const SortBarStyles = styled.section`
     margin: 0 2rem;
   }
   form {
-    .sort-input{
+    .sort-input {
       border-radius: var(--radius);
       font-size: 1.25rem;
       padding: 0.25rem 0.5rem;
