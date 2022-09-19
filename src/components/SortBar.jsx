@@ -1,7 +1,10 @@
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { BsGridFill, BsList } from 'react-icons/bs';
 
 const SortBar = () => {
+  const numberOfFilteredItems = useSelector(state => state.filter.filteredItems.length);
+
   return (
     <SortBarStyles>
       <div className='btn-container'>
@@ -12,7 +15,7 @@ const SortBar = () => {
           <BsList />
         </button>
       </div>
-      <p>נמצאו 300 מוצרים</p>
+      <p>נמצאו {numberOfFilteredItems} מוצרים</p>
       <form>
         <label htmlFor='sort'>מיון לפי</label>
         <select name='sort' id='sort' className='sort-input'>
