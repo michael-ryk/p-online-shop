@@ -2,13 +2,19 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   filteredItems: [],
+  viewType: 'grid-view',
 }
 
 const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
-    // reducers
+    setGridView(state){
+      state.viewType = 'grid-view';
+    },
+    setListView(state){
+      state.viewType = 'list-view';
+    },
     }
 });
 
