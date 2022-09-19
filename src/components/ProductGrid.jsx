@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { formatPrice } from '../Helpers/formatPrice';
 import styled from 'styled-components';
 
-const Product = ({id, name, price, image, description, category}) => {
+const ProductGrid = ({id, name, price, image, description, category}) => {
   return (
     <ProductStyle>
       <div className='img-container'>
@@ -59,4 +59,4 @@ const ProductStyle = styled.div`
   }
 `
 
-export default Product;
+export default ProductGrid;
