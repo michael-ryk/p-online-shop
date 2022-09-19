@@ -4,14 +4,15 @@ import { BsGridFill, BsList } from 'react-icons/bs';
 
 const SortBar = () => {
   const numberOfFilteredItems = useSelector(state => state.filter.filteredItems.length);
+  const viewType = useSelector(state => state.filter.viewType);
 
   return (
     <SortBarStyles>
       <div className='btn-container'>
-        <button>
+        <button className={`${viewType === 'grid-view' && 'active-btn'}`}>
           <BsGridFill />
         </button>
-        <button>
+        <button className={`${viewType === 'list-view' && 'active-btn'}`}>
           <BsList />
         </button>
       </div>
@@ -41,7 +42,7 @@ const SortBarStyles = styled.section`
     margin: 0 0.5rem;
     button {
       margin: 0 0.25rem;
-      padding: 0 0.5rem;
+      padding: 0.25rem 0.4rem;
       background: transparent;
       border: 1px solid var(--clr-heading-3);
       border-radius: var(--radius);
@@ -54,6 +55,10 @@ const SortBarStyles = styled.section`
       svg {
         font-size: 2rem;
       }
+    }
+    .active-btn {
+      background-color: var(--clr-heading-3);
+      color: var(--clr-paragraph-10);
     }
   }
   p {
