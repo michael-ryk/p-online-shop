@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  filteredItems: [],
+  allProducts: [],
+  filteredProducts: [],
   viewType: 'grid',
 }
 
@@ -11,6 +12,10 @@ const filterSlice = createSlice({
   reducers: {
     setViewMode(state, action){
       state.viewType = action.payload;
+    },
+    addProductsToStoreFirstTime(state, action){
+      state.allProducts = action.payload;
+      state.filteredProducts = action.payload;
     },
     }
 });

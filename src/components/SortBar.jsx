@@ -6,7 +6,7 @@ import { BsGridFill, BsList } from 'react-icons/bs';
 const SortBar = () => {
   const dispatch = useDispatch();
   const numberOfFilteredItems = useSelector(
-    (state) => state.filter.filteredItems.length
+    (state) => state.filter.filteredProducts.length
   );
   const viewType = useSelector((state) => state.filter.viewType);
 

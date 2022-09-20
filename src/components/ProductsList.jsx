@@ -7,7 +7,7 @@ import styled from 'styled-components';
 const Products = () => {
 
   // Take list of products from Redux store
-  const products = useSelector(state => state.products.productsList);
+  const products = useSelector(state => state.filter.filteredProducts);
   const viewType = useSelector(state => state.filter.viewType);
 
   return (

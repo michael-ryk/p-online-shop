@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  productsList: [],
   showSidebar: false,
 }
 
@@ -14,9 +13,6 @@ const productsSlice = createSlice({
     },
     closeSidebar(state){
       state.showSidebar = false;
-    },
-    addProductsToStore(state, action){
-      state.productsList = action.payload.productsList;
     },
   }
 });

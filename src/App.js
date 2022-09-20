@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { filterActions } from './store/filter';
 import { products_url } from './constants/urls';
 
 // Import UI
@@ -19,7 +20,7 @@ import Contacts from './pages/Contacts';
 import NotFound from './pages/NotFound';
 
 import './App.css';
-import { productsActions } from './store/products';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -52,11 +53,7 @@ function App() {
       }
 
       // Set Store list of products
-      dispatch(
-        productsActions.addProductsToStore({
-          productsList: adaptedProductsList,
-        })
-      );
+      dispatch(filterActions.addProductsToStoreFirstTime(adaptedProductsList));
     };
 
     // trigger async function to fetch data and catch errors
