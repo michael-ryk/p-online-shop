@@ -49,10 +49,12 @@ const filterSlice = createSlice({
           state.filteredProducts = tmpProducts.sort((a,b) => b.price - a.price);
           break;
         case 'name-a':
-          console.log('If else - name-a');
+          // console.log('If else - name-a');
+          state.filteredProducts = tmpProducts.sort((a,b) => a.name.localeCompare(b.name));
           break;
         case 'name-z':
-          console.log('If else - name-z');
+          // console.log('If else - name-z');
+          state.filteredProducts = tmpProducts.sort((a,b) => b.name.localeCompare(a.name));
           break;
         default:
           console.log('Switch - no match found');
