@@ -1,11 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import { productsActions } from '../store/products';
 import { linksConstants } from '../constants/PageLinks';
 import CartButtons from '../components/CartButtons';
 import styled from 'styled-components';
 
 //NavStyles - nav container
-const Navbar = ({openSidebar}) => {
+const Navbar = () => {
+  const dispatch = useDispatch();
+
   return (
     <NavStyles>
       <div className='nav-main'>
@@ -13,7 +16,7 @@ const Navbar = ({openSidebar}) => {
           <Link to='/'>
             <h1>LOGO</h1>
           </Link>
-          <button type='button' className='nav-btn' onClick={openSidebar}>
+          <button type='button' className='nav-btn' onClick={() => {dispatch(productsActions.openSidebar())}}>
             OpenSideBar
           </button>
         </div>
