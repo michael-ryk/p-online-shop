@@ -9,6 +9,7 @@ const SortBar = () => {
     (state) => state.filter.filteredProducts.length
   );
   const viewType = useSelector((state) => state.filter.viewType);
+  const sortValue = useSelector(state => state.filter.sortValue);
 
   return (
     <SortBarStyles>
@@ -33,7 +34,7 @@ const SortBar = () => {
       <p>נמצאו {numberOfFilteredItems} מוצרים</p>
       <form>
         <label htmlFor='sort'>מיון לפי</label>
-        <select name='sort' id='sort' className='sort-input'>
+        <select name='sort' id='sort' className='sort-input' value={sortValue} onChange={(e) => dispatch(filterActions.editSortValue(e.target.value))}>
           <option value='price-lowest'>מחיר (נמוך לגבוהה)</option>
           <option value='price-highers'>מחיר (גבוהה לנמוך)</option>FD
           <option value='name-a'>שם הפריט (א-ת)</option>

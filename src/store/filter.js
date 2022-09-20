@@ -4,6 +4,7 @@ const initialState = {
   allProducts: [],
   filteredProducts: [],
   viewType: 'grid',
+  sortValue: 'price-lowest',
 }
 
 const filterSlice = createSlice({
@@ -17,6 +18,9 @@ const filterSlice = createSlice({
       state.allProducts = action.payload;
       state.filteredProducts = action.payload;
     },
+    editSortValue(state, action){
+      state.sortValue = action.payload;
+    }
     }
 });
 
