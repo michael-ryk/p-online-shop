@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { productsActions } from '../store/products';
 import { linksConstants } from '../constants/PageLinks';
 
 import CartButtons from '../components/CartButtons';
 import styled from 'styled-components';
 
-const Sidebar = ({closeSidebar}) => {
+const Sidebar = () => {
+  const dispatch = useDispatch();
 
   return (
     <SidebarStyles>
@@ -12,7 +15,7 @@ const Sidebar = ({closeSidebar}) => {
         <Link to='/'>
             <h1>LOGO</h1>
           </Link>
-        <button type='button' className='sidebar-btn' onClick={closeSidebar}>X</button>
+        <button type='button' className='sidebar-btn' onClick={() => {dispatch(productsActions.closeSidebar())}}>X</button>
       </div>
       <ul className='sidebar-links'>
         {linksConstants.map(item => {
