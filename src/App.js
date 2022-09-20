@@ -28,6 +28,7 @@ function App() {
 
   // Fetch products from db and update store
   useEffect(() => {
+    // console.log("=== STEP 1 === useEffect - App.js - Fetch products from DB - Store to allProducts")
     // fetch product list using async await from DB
     const fetchProductsList = async () => {
       const response = await fetch(products_url);
@@ -54,6 +55,8 @@ function App() {
 
       // Set Store list of products
       dispatch(filterActions.addProductsToStoreFirstTime(adaptedProductsList));
+      // console.log('=== STEP 2 === Sort products using default sort for first time')
+      dispatch(filterActions.sortProducts());
     };
 
     // trigger async function to fetch data and catch errors

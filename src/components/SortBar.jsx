@@ -2,14 +2,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { filterActions } from '../store/filter';
 import styled from 'styled-components';
 import { BsGridFill, BsList } from 'react-icons/bs';
+import { useEffect } from 'react';
 
 const SortBar = () => {
   const dispatch = useDispatch();
-  const numberOfFilteredItems = useSelector(
-    (state) => state.filter.filteredProducts.length
-  );
+  const numberOfFilteredItems = useSelector(state => state.filter.NumberOfFilteredProducts);
   const viewType = useSelector((state) => state.filter.viewType);
   const sortValue = useSelector(state => state.filter.sortValue);
+
+  useEffect(() => {
+    // console.log("=== STEP 3 === UseEffect - sortbar")
+    dispatch(filterActions.sortProducts())
+  },[sortValue]);
 
   return (
     <SortBarStyles>
