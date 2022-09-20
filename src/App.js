@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { products_url } from './constants/urls';
 
 // Import UI
@@ -23,10 +23,10 @@ import { productsActions } from './store/products';
 
 function App() {
   const dispatch = useDispatch();
+  const showSidebar = useSelector(state => state.products.showSidebar);
 
   // Fetch products from db and update store
   useEffect(() => {
-
     // fetch product list using async await from DB
     const fetchProductsList = async () => {
       const response = await fetch(products_url);
@@ -50,7 +50,7 @@ function App() {
           });
         }
       }
-      
+
       // Set Store list of products
       dispatch(
         productsActions.addProductsToStore({
@@ -65,22 +65,10 @@ function App() {
     });
   }, []);
 
-  const [showSidebar, setShowSidebar] = useState(false);
-
   return (
     <>
-      <Navbar
-        openSidebar={() => {
-          setShowSidebar(true);
-        }}
-      />
-      {showSidebar && (
-        <Sidebar
-          closeSidebar={() => {
-            setShowSidebar(false);
-          }}
-        />
-      )}
+      <Navbar />
+      {showSidebar && <Sidebar />}
       <Routes>
         <Route path='/' element={<Navigate replace to='/homepage' />} />
         <Route
