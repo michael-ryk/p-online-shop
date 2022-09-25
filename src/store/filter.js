@@ -83,8 +83,19 @@ const filterSlice = createSlice({
     filterProducts(state) {
       const products = state.filteredProducts;
       var filterText = state.filters.search_text;
-      console.log(filterText)
       state.filteredProducts = products.filter( item => item.name.startsWith(filterText));
+    },
+    clearFilters(state) {
+      state.filters = {
+        search_text: '',
+        category: 'all',
+        color: 'all',
+        min_price: 0,
+        max_price: 0,
+        price: 0,
+        discount: false,
+      }
+      state.filteredProducts = state.fetchedProducts;
     }
   },
 });

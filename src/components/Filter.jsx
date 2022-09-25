@@ -16,6 +16,11 @@ const Filter = () => {
     dispatch(filterActions.filterProducts());
   }
 
+  const handleClearFilter = () => {
+    dispatch(filterActions.clearFilters());
+    dispatch(filterActions.sortProducts());
+  }
+
   return (
     <FilterStyles>
       <form onSubmit={submitHandler}>
@@ -41,7 +46,7 @@ const Filter = () => {
           <h3>מבצעים</h3>
         </div>
       </form>
-      <button type='button' className='clear-btn'>
+      <button type='button' className='clear-btn' onClick={handleClearFilter}>
         אפס סינון
       </button>
     </FilterStyles>
