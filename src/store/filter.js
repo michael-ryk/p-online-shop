@@ -77,11 +77,14 @@ const filterSlice = createSlice({
       }
     },
     updateFilters(state, action) {
-      state.filters.search_text = action.payload.value;
-      console.log(state.filters.search_text);
+      const  {name, value} = action.payload
+      state.filters.search_text = value;
     },
     filterProducts(state) {
-
+      const products = state.filteredProducts;
+      var filterText = state.filters.search_text;
+      console.log(filterText)
+      state.filteredProducts = products.filter( item => item.name.startsWith(filterText));
     }
   },
 });
