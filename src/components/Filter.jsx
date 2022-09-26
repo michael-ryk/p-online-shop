@@ -6,10 +6,6 @@ const Filter = () => {
 
   const dispatch = useDispatch()
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-  };
-
   const handleFilterChanges = (e) => {
     const { name, value } = e.target;
     dispatch(filterActions.updateFilters({name, value}))
@@ -23,7 +19,7 @@ const Filter = () => {
 
   return (
     <FilterStyles>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={(e) => {e.preventDefault()}}>
         <div className='form-block'>
           <input
             name='search_text'
