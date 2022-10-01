@@ -5,6 +5,9 @@ import styled from 'styled-components';
 const Filter = () => {
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.filter.fetchedProducts);
+  const {
+    filters: { price, min_price, max_price },
+  } = useSelector((state) => state.filter);
   const uniqueCategories = new Set(allProducts.map((item) => item.category));
   const categories = ['כל הקטגוריות', ...uniqueCategories];
 
@@ -58,6 +61,15 @@ const Filter = () => {
         </div>
         <div className='form-block'>
           <h2>מחיר</h2>
+          <p>{price}</p>
+          <input
+            type='range'
+            name='price'
+            min={min_price}
+            max={max_price}
+            value={price}
+            onChange={handleFilterChanges}
+          />
         </div>
         <div className='form-block'>
           <h2>מבצעים</h2>

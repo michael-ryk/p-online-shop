@@ -29,8 +29,9 @@ const filterSlice = createSlice({
       state.fetchedProducts = action.payload;
       state.filteredProducts = action.payload;
       state.NumberOfFilteredProducts = state.filteredProducts.length;
-      // console.log('fetchedProducts = ')
-      // console.log(state.fetchedProducts)
+      // Define max price based on products
+      let allPrices = state.fetchedProducts.map(item => item.price);
+      state.max_price = Math.max(...allPrices);
     },
     editSortValue(state, action) {
       state.sortValue = action.payload;
