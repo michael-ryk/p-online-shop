@@ -81,7 +81,8 @@ const filterSlice = createSlice({
       const  {name, value} = action.payload
       // console.log(name)
       if ( name === 'search_text' ) state.filters.search_text = value;
-      if ( name === 'category') state.filters.category = value;
+      if ( name === 'category' ) state.filters.category = value;
+      if ( name === 'price' ) state.filters.price = value;
     },
     filterProducts(state) {
       const products = state.filteredProducts;

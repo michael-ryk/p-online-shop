@@ -61,7 +61,7 @@ const Filter = () => {
         </div>
         <div className='form-block'>
           <h2>מחיר</h2>
-          <p>{price}</p>
+          <p className='price'>{price / 100}</p>
           <input
             type='range'
             name='price'
@@ -113,6 +113,12 @@ const FilterStyles = styled.section`
     &:hover {
       background-color: var(--clr-paragraph-8);
     }
+  }
+
+  .price {
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--clr-red-light);
   }
 
   .clear-btn {
