@@ -1,10 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { filterActions } from '../store/filter';
 import styled from 'styled-components';
 
 const Filter = () => {
 
   const dispatch = useDispatch()
+  const allProducts = useSelector(state => state.filter.fetchedProducts);
+  const uniqueCategories = new Set(allProducts.map(item => item.category));
+  const categories = ['כל הקטגוריות', ...uniqueCategories];
 
   const handleFilterChanges = (e) => {
     const { name, value } = e.target;
@@ -31,6 +34,11 @@ const Filter = () => {
         </div>
         <div className='form-block'>
           <h3>קטגוריה</h3>
+          {categories.map((item, index) => {
+            return (
+              <p key={index}>{item}</p>
+            )
+          })}
         </div>
         <div className='form-block'>
           <h3>צבע</h3>
