@@ -93,7 +93,7 @@ const filterSlice = createSlice({
     clearFilters(state) {
       state.filters = {
         search_text: '',
-        category: 'all',
+        category: 'כל הקטגוריות',
         color: 'all',
         min_price: 0,
         max_price: 0,

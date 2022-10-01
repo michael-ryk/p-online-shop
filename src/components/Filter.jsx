@@ -10,6 +10,7 @@ const Filter = () => {
 
   const handleFilterChanges = (e) => {
     const { name, value } = e.target;
+    dispatch(filterActions.clearFilters());
     dispatch(filterActions.updateFilters({ name, value }));
     dispatch(filterActions.filterProducts());
   };
