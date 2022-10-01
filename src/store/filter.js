@@ -31,7 +31,7 @@ const filterSlice = createSlice({
       state.NumberOfFilteredProducts = state.filteredProducts.length;
       // Define max price based on products
       let allPrices = state.fetchedProducts.map(item => item.price);
-      state.max_price = Math.max(...allPrices);
+      state.filters.max_price = Math.max(...allPrices);
     },
     editSortValue(state, action) {
       state.sortValue = action.payload;
@@ -96,10 +96,9 @@ const filterSlice = createSlice({
         search_text: '',
         category: 'כל הקטגוריות',
         color: 'all',
-        min_price: 0,
-        max_price: 0,
         price: 0,
         discount: false,
+        ...state.filters,
       }
       state.filteredProducts = state.fetchedProducts;
     }
