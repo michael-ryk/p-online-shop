@@ -3,26 +3,29 @@ import { filterActions } from '../store/filter';
 import styled from 'styled-components';
 
 const Filter = () => {
-
-  const dispatch = useDispatch()
-  const allProducts = useSelector(state => state.filter.fetchedProducts);
-  const uniqueCategories = new Set(allProducts.map(item => item.category));
+  const dispatch = useDispatch();
+  const allProducts = useSelector((state) => state.filter.fetchedProducts);
+  const uniqueCategories = new Set(allProducts.map((item) => item.category));
   const categories = ['כל הקטגוריות', ...uniqueCategories];
 
   const handleFilterChanges = (e) => {
     const { name, value } = e.target;
-    dispatch(filterActions.updateFilters({name, value}))
+    dispatch(filterActions.updateFilters({ name, value }));
     dispatch(filterActions.filterProducts());
-  }
+  };
 
   const handleClearFilter = () => {
     dispatch(filterActions.clearFilters());
     dispatch(filterActions.sortProducts());
-  }
+  };
 
   return (
     <FilterStyles>
-      <form onSubmit={(e) => {e.preventDefault()}}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <div className='form-block'>
           <input
             name='search_text'
@@ -33,21 +36,30 @@ const Filter = () => {
           />
         </div>
         <div className='form-block'>
-          <h3>קטגוריה</h3>
+          <h2>קטגוריה</h2>
           {categories.map((item, index) => {
             return (
-              <p key={index}>{item}</p>
-            )
+              <button
+                key={index}
+                type='button'
+                name='category'
+                value={item}
+                onClick={handleFilterChanges}
+                className='list-btn'
+              >
+                {item}
+              </button>
+            );
           })}
         </div>
         <div className='form-block'>
-          <h3>צבע</h3>
+          <h2>צבע</h2>
         </div>
         <div className='form-block'>
-          <h3>מחיר</h3>
+          <h2>מחיר</h2>
         </div>
         <div className='form-block'>
-          <h3>מבצעים</h3>
+          <h2>מבצעים</h2>
         </div>
       </form>
       <button type='button' className='clear-btn' onClick={handleClearFilter}>
@@ -72,8 +84,25 @@ const FilterStyles = styled.section`
     font-size: 1.5rem;
     padding: 0.25rem 0.5rem;
   }
-  .clear-btn {
+  button {
     display: block;
+    cursor: pointer;
+  }
+
+  .list-btn {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    letter-spacing: var(--spacing);
+    padding: 0.2rem 0.5rem;
+    margin: 0.2rem 0;
+    color: var(--clr-heading-4);
+    &:hover {
+      background-color: var(--clr-paragraph-8);
+    }
+  }
+
+  .clear-btn {
     width: 100%;
     font-size: 20px;
     border: 1px solid transparent;

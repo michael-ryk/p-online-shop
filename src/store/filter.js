@@ -8,7 +8,7 @@ const initialState = {
   sortValue: 'price-lowest',
   filters: {
     search_text: '',
-    category: 'all',
+    category: 'כל הקטגוריות',
     color: 'all',
     min_price: 0,
     max_price: 0,
@@ -78,12 +78,17 @@ const filterSlice = createSlice({
     },
     updateFilters(state, action) {
       const  {name, value} = action.payload
-      state.filters.search_text = value;
+      // console.log(name)
+      if ( name === 'search_text' ) state.filters.search_text = value;
+      if ( name === 'category') state.filters.category = value;
     },
     filterProducts(state) {
       const products = state.filteredProducts;
-      var filterText = state.filters.search_text;
-      state.filteredProducts = products.filter( item => item.name.startsWith(filterText));
+      const { search_text, category } = state.filters;
+
+      if ( search_text ) state.filteredProducts = products.filter( item => item.name.startsWith(search_text) );
+      if ( category !== 'כל הקטגוריות') state.filteredProducts = products.filter( item => item.category === category );
+
     },
     clearFilters(state) {
       state.filters = {
