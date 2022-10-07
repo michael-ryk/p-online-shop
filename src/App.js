@@ -49,10 +49,12 @@ function App() {
             description: data[key].description,
             image: data[key].image,
             category: data[key].category,
+            discount: data[key].discount || false
           });
         }
       }
 
+      // console.log(adaptedProductsList);
       // Set Store list of products
       dispatch(filterActions.addProductsToStoreFirstTime(adaptedProductsList));
       // console.log('=== STEP 2 === Sort products using default sort for first time')

@@ -89,15 +89,11 @@ const filterSlice = createSlice({
     },
     filterProducts(state) {
       var tmpProducts = state.filteredProducts;
-      const { search_text, category, price } = state.filters;
-      if (search_text)
-        tmpProducts = tmpProducts.filter((item) =>
-          item.name.startsWith(search_text)
-        );
-      if (category !== 'כל הקטגוריות')
-        tmpProducts = tmpProducts.filter((item) => item.category === category);
-      if (price !== 0)
-        tmpProducts = tmpProducts.filter((item) => item.price <= price);
+      const { search_text, category, price, discount } = state.filters;
+      if (search_text) tmpProducts = tmpProducts.filter((item) => item.name.startsWith(search_text));
+      if (category !== 'כל הקטגוריות') tmpProducts = tmpProducts.filter((item) => item.category === category);
+      if (price !== 0) tmpProducts = tmpProducts.filter((item) => item.price <= price);
+      if (discount) tmpProducts = tmpProducts.filter((item) => item.discount === true);
       state.filteredProducts = tmpProducts;
     },
     clearFilters(state) {
