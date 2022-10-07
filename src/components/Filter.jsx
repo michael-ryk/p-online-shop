@@ -6,15 +6,15 @@ const Filter = () => {
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.filter.fetchedProducts);
   const {
-    filters: { price, min_price, max_price },
+    filters: { price, min_price, max_price, discount },
   } = useSelector((state) => state.filter);
   const uniqueCategories = new Set(allProducts.map((item) => item.category));
   const categories = ['כל הקטגוריות', ...uniqueCategories];
 
   const handleFilterChanges = (e) => {
-    const { name, value } = e.target;
+    const { name, value, checked } = e.target;
     dispatch(filterActions.clearFilters());
-    dispatch(filterActions.updateFilters({ name, value }));
+    dispatch(filterActions.updateFilters({ name, value, checked}));
     dispatch(filterActions.filterProducts());
   };
 
@@ -73,6 +73,14 @@ const Filter = () => {
         </div>
         <div className='form-block'>
           <h2>מבצעים</h2>
+          <input
+            type='checkbox'
+            name='discount'
+            className='discount-input'
+            onChange={handleFilterChanges}
+            checked={discount}
+          />
+          <label>פריטים במבצע</label>
         </div>
       </form>
       <button type='button' className='clear-btn' onClick={handleClearFilter}>
@@ -96,6 +104,9 @@ const FilterStyles = styled.section`
     border-radius: var(--radius);
     font-size: 1.5rem;
     padding: 0.25rem 0.5rem;
+  }
+  .discount-input {
+    margin-left: 0.5rem;
   }
   button {
     display: block;

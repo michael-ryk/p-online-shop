@@ -30,7 +30,7 @@ const filterSlice = createSlice({
       state.filteredProducts = action.payload;
       state.NumberOfFilteredProducts = state.filteredProducts.length;
       // Define max price based on products
-      let allPrices = state.fetchedProducts.map(item => item.price);
+      let allPrices = state.fetchedProducts.map((item) => item.price);
       let maxPrice = Math.max(...allPrices);
       state.filters.max_price = maxPrice;
       state.filters.price = maxPrice;
@@ -80,18 +80,24 @@ const filterSlice = createSlice({
       }
     },
     updateFilters(state, action) {
-      const  {name, value} = action.payload
-      // console.log('update filters: ' + name + ' : ' + value)
-      if ( name === 'search_text' ) state.filters.search_text = value;
-      if ( name === 'category' ) state.filters.category = value;
-      if ( name === 'price' ) state.filters.price = value;
+      const { name, value } = action.payload;
+      // console.log('update filters: ' + name + ' : ' + value);
+      if (name === 'search_text') state.filters.search_text = value;
+      if (name === 'category') state.filters.category = value;
+      if (name === 'price') state.filters.price = value;
+      if (name === 'discount') state.filters.discount = action.payload.checked;
     },
     filterProducts(state) {
       var tmpProducts = state.filteredProducts;
       const { search_text, category, price } = state.filters;
-      if ( search_text ) tmpProducts = tmpProducts.filter( item => item.name.startsWith(search_text) );
-      if ( category !== 'כל הקטגוריות') tmpProducts = tmpProducts.filter( item => item.category === category );
-      if ( price !== 0 ) tmpProducts = tmpProducts.filter( item => item.price <= price);
+      if (search_text)
+        tmpProducts = tmpProducts.filter((item) =>
+          item.name.startsWith(search_text)
+        );
+      if (category !== 'כל הקטגוריות')
+        tmpProducts = tmpProducts.filter((item) => item.category === category);
+      if (price !== 0)
+        tmpProducts = tmpProducts.filter((item) => item.price <= price);
       state.filteredProducts = tmpProducts;
     },
     clearFilters(state) {
@@ -102,9 +108,9 @@ const filterSlice = createSlice({
         price: state.filters.max_price,
         discount: false,
         ...state.filters,
-      }
+      };
       state.filteredProducts = state.fetchedProducts;
-    }
+    },
   },
 });
 
