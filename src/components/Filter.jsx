@@ -10,11 +10,14 @@ const Filter = () => {
   } = useSelector((state) => state.filter);
   const uniqueCategories = new Set(allProducts.map((item) => item.category));
   const categories = ['כל הקטגוריות', ...uniqueCategories];
+  const uniqueColors = new Set(allProducts.map((item) => item.color));
+  const colors = ['כל', ...uniqueColors];
+  console.log(colors);
 
   const handleFilterChanges = (e) => {
     const { name, value, checked } = e.target;
     dispatch(filterActions.clearFilters());
-    dispatch(filterActions.updateFilters({ name, value, checked}));
+    dispatch(filterActions.updateFilters({ name, value, checked }));
     dispatch(filterActions.filterProducts());
   };
 
@@ -58,6 +61,22 @@ const Filter = () => {
         </div>
         <div className='form-block'>
           <h2>צבע</h2>
+          <div className='colors'>
+            {colors.map((item, index) => {
+              if (item === 'כל') {
+                return (
+                  <button key={index} name='color' className='btn-all'>
+                    הכל
+                  </button>
+                );
+              } else {
+                return (
+                  <button key={index} name='color' className='btn-color' style={{ background: item}}>
+                  </button>
+                );
+              }
+            })}
+          </div>
         </div>
         <div className='form-block'>
           <h2>מחיר</h2>
@@ -100,14 +119,36 @@ const FilterStyles = styled.section`
   .form-block {
     margin: 1rem auto;
   }
+
   .search-input {
     border-radius: var(--radius);
     font-size: 1.5rem;
     padding: 0.25rem 0.5rem;
   }
+
+  .colors {
+    display: flex;
+    padding: 0.5rem 0;
+    button {
+      margin-left: 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-all {
+      font-size: 1.25rem;
+      background-color: white;
+    }
+    .btn-color {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+    }
+  }
+
   .discount-input {
     margin-left: 0.5rem;
   }
+
   button {
     display: block;
     cursor: pointer;

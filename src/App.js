@@ -49,7 +49,8 @@ function App() {
             description: data[key].description,
             image: data[key].image,
             category: data[key].category,
-            discount: data[key].discount || false
+            discount: data[key].discount || false,
+            color: data[key].color,
           });
         }
       }
