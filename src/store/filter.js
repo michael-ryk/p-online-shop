@@ -9,7 +9,7 @@ const initialState = {
   filters: {
     search_text: '',
     category: 'כל הקטגוריות',
-    color: 'all',
+    color: 'הכל',
     min_price: 0,
     max_price: 0,
     price: 0,
@@ -85,22 +85,24 @@ const filterSlice = createSlice({
       if (name === 'search_text') state.filters.search_text = value;
       if (name === 'category') state.filters.category = value;
       if (name === 'price') state.filters.price = value;
-      if (name === 'discount') state.filters.discount = action.payload.checked;
+      if (name === 'discount') state.filters.discount = value;
+      if (name === 'color') state.filters.color = value;
     },
     filterProducts(state) {
       var tmpProducts = state.filteredProducts;
-      const { search_text, category, price, discount } = state.filters;
+      const { search_text, category, price, discount, color } = state.filters;
       if (search_text) tmpProducts = tmpProducts.filter((item) => item.name.startsWith(search_text));
       if (category !== 'כל הקטגוריות') tmpProducts = tmpProducts.filter((item) => item.category === category);
       if (price !== 0) tmpProducts = tmpProducts.filter((item) => item.price <= price);
       if (discount) tmpProducts = tmpProducts.filter((item) => item.discount === true);
+      if (color !== 'הכל')  tmpProducts = tmpProducts.filter((item) => item.color === color);
       state.filteredProducts = tmpProducts;
     },
     clearFilters(state) {
       state.filters = {
         search_text: '',
         category: 'כל הקטגוריות',
-        color: 'all',
+        color: 'הכל',
         price: state.filters.max_price,
         discount: false,
         ...state.filters,

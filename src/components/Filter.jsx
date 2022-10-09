@@ -11,13 +11,16 @@ const Filter = () => {
   const uniqueCategories = new Set(allProducts.map((item) => item.category));
   const categories = ['כל הקטגוריות', ...uniqueCategories];
   const uniqueColors = new Set(allProducts.map((item) => item.color));
-  const colors = ['כל', ...uniqueColors];
-  console.log(colors);
+  const colors = ['הכל', ...uniqueColors];
 
   const handleFilterChanges = (e) => {
-    const { name, value, checked } = e.target;
+    // console.log(e.target);
+    const name = e.target.name;
+    var value = e.target.value;
+    if ( name === 'color' ) value = e.target.dataset.color;
+    if ( name === 'discount' ) value = e.target.checked;
     dispatch(filterActions.clearFilters());
-    dispatch(filterActions.updateFilters({ name, value, checked }));
+    dispatch(filterActions.updateFilters({ name, value }));
     dispatch(filterActions.filterProducts());
   };
 
@@ -63,16 +66,28 @@ const Filter = () => {
           <h2>צבע</h2>
           <div className='colors'>
             {colors.map((item, index) => {
-              if (item === 'כל') {
+              if (item === 'הכל') {
                 return (
-                  <button key={index} name='color' className='btn-all'>
+                  <button
+                    key={index}
+                    name='color'
+                    className='btn-all'
+                    onClick={handleFilterChanges}
+                    data-color={item}
+                  >
                     הכל
                   </button>
                 );
               } else {
                 return (
-                  <button key={index} name='color' className='btn-color' style={{ background: item}}>
-                  </button>
+                  <button
+                    key={index}
+                    name='color'
+                    className='btn-color'
+                    style={{ background: item }}
+                    onClick={handleFilterChanges}
+                    data-color={item}
+                  ></button>
                 );
               }
             })}
@@ -129,6 +144,9 @@ const FilterStyles = styled.section`
   .colors {
     display: flex;
     padding: 0.5rem 0;
+    @media only screen and (max-width: 450px){
+      justify-content: center;
+    }
     button {
       margin-left: 0.5rem;
       border: none;
