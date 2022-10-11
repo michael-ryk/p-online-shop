@@ -4,6 +4,7 @@ const initialState = {
   fetchedProducts: [],
   filteredProducts: [],
   NumberOfFilteredProducts: 0,
+  max_price: 0,
   viewType: 'grid',
   sortValue: 'price-lowest',
   filters: {
@@ -32,6 +33,7 @@ const filterSlice = createSlice({
       // Define max price based on products
       let allPrices = state.fetchedProducts.map((item) => item.price);
       let maxPrice = Math.max(...allPrices);
+      state.max_price = maxPrice;
       state.filters.max_price = maxPrice;
       state.filters.price = maxPrice;
     },
@@ -89,7 +91,7 @@ const filterSlice = createSlice({
       if (name === 'color') state.filters.color = value;
     },
     filterProducts(state) {
-      var tmpProducts = state.filteredProducts;
+      var tmpProducts = state.fetchedProducts;
       const { search_text, category, price, discount, color } = state.filters;
       if (search_text) tmpProducts = tmpProducts.filter((item) => item.name.startsWith(search_text));
       if (category !== 'כל הקטגוריות') tmpProducts = tmpProducts.filter((item) => item.category === category);
@@ -103,9 +105,10 @@ const filterSlice = createSlice({
         search_text: '',
         category: 'כל הקטגוריות',
         color: 'הכל',
-        price: state.filters.max_price,
+        price: state.max_price,
+        min_price: 0,
+        max_price: state.max_price,
         discount: false,
-        ...state.filters,
       };
       state.filteredProducts = state.fetchedProducts;
     },
