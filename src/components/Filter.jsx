@@ -19,7 +19,6 @@ const Filter = () => {
     var value = e.target.value;
     if ( name === 'color' ) value = e.target.dataset.color;
     if ( name === 'discount' ) value = e.target.checked;
-    dispatch(filterActions.clearFilters());
     dispatch(filterActions.updateFilters({ name, value }));
     dispatch(filterActions.filterProducts());
   };
